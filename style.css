@@ -5,15 +5,42 @@
         background: linear-gradient(120deg, #e1e7ec 0%, #86898d 50%, #f4f5f7 100%);
     }
 
-    h1 {
-        text-align: center;
+    
+    .titulo {
+        display: flex;
+        align-items: center;
+    }
+    
+    .titulo h1 {
+        justify-content: center;
+        margin: auto;
         margin-top: 20px;
         margin-bottom: 20px;
         font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
         font-size: 50px;
         text-transform: capitalize;
         cursor: pointer;
+        
     }
+
+    .titulo img {
+        position: absolute;
+        left: 75rem;
+        width: 60px;
+        height: 60px;
+        cursor: pointer;
+    }
+
+
+    /* .table {
+        display:none;
+        margin: auto;
+        margin-left: 700px;
+        margin-right: 50px;
+        width: 50%;
+        height: 50%;
+        padding: 10px;
+    } */
 
     h2 {
         text-align: center;
@@ -35,7 +62,7 @@
    .nav ul li {
     display: inline-block;
     font-size: 20px;
-    margin: 0 10px;
+    margin: 0px 25px;
    }
 
    a {
