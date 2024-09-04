@@ -24,7 +24,7 @@
     .navegacion  {
         width: 100%;
         background-color: #fff;
-        height: 30px;
+        height: 39px;
         background-position: fixed;
     }
 
@@ -40,7 +40,8 @@
 
    a {
   text-decoration: none; 
-  color: #000;   
+  color: #000;
+  font-size: 28px;   
    }
 
    .nav ul li a:hover {
@@ -63,20 +64,107 @@
    .box-container {
     display: flex;
     justify-content: space-around;
-    margin-top: 2em;
+    margin-top: 2.5em;
    }
 
+
+   /* Inicio del media query Diseño responsive */
+
+   @media (max-width: 450px) {
+    a {
+        font-size: 15px;
+    }
+
+   h1 {
+    font-size: 20px;
+   }
+
+   }
+
+
+    @media (max-width: 450px) {
+        .box-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+    
+        .box {
+            width: 100%;
+            margin: auto; 
+            margin-bottom: 2rem; 
+        }
+
+        body .main {
+            margin: auto;
+            width: 100vw;
+          }
+    }
+
+
+    @media (max-width:726px){
+          .box-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100vw;
+          }
+
+          .box {
+            width: 100%;
+            margin: auto;
+            margin-bottom: 1rem;
+
+          }
+         body .main {
+            margin: auto;
+            width: 100vw;
+          }
+    }
+
+
+
+    @media (max-width:918px) {
+        body .main {
+            width: 100%;
+        }
+
+        .box-container {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            width: 100%;
+            margin: auto;
+        }
+
+        .box  {
+            width: 48%;
+            margin: 1% 5% 5%;
+        }
+
+      
+    }    
+
+    /* fin del media query */
+
+
+      .card {
+        width: 100%;
+        height: auto;
+      }
+   
+
     .box {
-        width: 22em;
-        height: 30em;
-        margin: 5px;
+        width: 15em;
+        height: 25em;
+        margin: 15px;
     }
 
     .box-1 {
         background-color: #fff;
-     
-    }
 
+    }
 
     .box-2 {
         background-color: #fff;
@@ -96,16 +184,23 @@
 
 
     .card {
-        height: 18rem;
+        height: auto;
     }
 
     .card-title {
         text-align: center;
-        height: 20px;
+        height: auto;
+    }
+
+
+     .box-1 .card img {
+        width: 222px;
+        height: 222px;
     }
 
     .card img {
-        height: 100%;
+        width: 222px;
+        height: 222px;
         background-position: cover;
     }
 
