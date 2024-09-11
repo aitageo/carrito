@@ -11,15 +11,15 @@
   <body>
     <div class="titulo">
       <h1 class="animate__animated animate__bounceIn" id="titulo">Mi tienda</h1>
-      <img src="./img/shopping-cart_1892647.png" alt="" srcset="">
+      <img src="./img/shopping-cart_1892647.png" alt="Carrito de compras" class="img-fluid carrito-img">
       <!-- <a href="https://www.freepik.es/iconos/carrito-compras">Icono de Freepik</a> -->
-    </div>
+    </div>    
    <!-- Modal -->
-   <div class="modal" tabindex="-1">
+   <div class="modal fade" id="miModal" tabindex="-1">
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title">Modal title</h5>
+          <h5 class="text-center">Carrito</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
@@ -35,9 +35,13 @@
                      <th scope="col"></th>
                    </tr>
                  </thead>
-                 <tbody></tbody>
+                 <tbody>
+                  
+                 </tbody>
                </table>
              </div>
+             <div id="total-carrito">Total: $0.00</div>
+
               <!-- Termina el carrito -->
           </p>
         </div>
@@ -48,7 +52,7 @@
     </div>
   </div>
 
-
+<!-- Navegacion -->
     <div class="navegacion">
       <div class="nav">
         <ul>
@@ -88,7 +92,7 @@
       <div class="card-body">
         <h5 class="card-title">Arroz Diana</h5>
         <p class="card-text">$4500</p>
-        <a href="#" class="btn btn-primary" id="agregar">Agregar al carrito</a>
+        <a href="#" class="btn btn-primary" data-id="1">Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -98,7 +102,7 @@
       <div class="card-body">
         <h5 class="card-title">Aceite de girasol</h5>
         <p class="card-text">$7000</p>
-        <a href="#" class="btn btn-primary" id="agregar">Agregar al carrito</a>
+        <a href="#" class="btn btn-primary"  data-id="2">Agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -108,7 +112,7 @@
       <div class="card-body">
         <h5 class="card-title">Papas Margarita</h5>
         <p class="card-text">$3000</p>
-        <a href="#" class="btn btn-primary" class="button">agregar al carrito</a>
+        <a href="#" class="btn btn-primary" class="button" data-id="3" >agregar al carrito</a>
       </div>
     </div>
   </div>
@@ -116,14 +120,15 @@
     <div class="card" style="width: 14rem;">
       <img src="https://jumbocolombiaio.vtexassets.com/arquivos/ids/186130-1600-1600?v=637813981192900000&width=1600&height=1600&aspect=true" class="card-img-top" alt="...">
       <div class="card-body">
-        <h5 class="card-title">Spaguttis Doria</h5>
+        <h5 class="card-title">Spaguettis Doria</h5>
         <p class="card-text">$2500</p>
-        <a href="#" class="btn btn-primary"class="button" >agregar al carrito</a>
+        <a href="#" class="btn btn-primary"class="button" data-id="4">agregar al carrito</a>
       </div>
     </div>
   </div>
   </div>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <script src="main.js"></script>
+   <!-- <script src="index.js"></script> -->
 </body>
 </html>
