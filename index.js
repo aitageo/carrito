@@ -37,35 +37,24 @@ function leerDatos(data) {
         cantidad: 1,
         id: data.querySelector('a').getAttribute('data-id')
     };
-  
+
     console.log(productos);
     
-    
+
+    const existe = totalCarrito.some(producto => producto.id === productos.id);
+    if (existe) {
+        totalCarrito = totalCarrito.map(producto => {
+            if (producto.id === productos.id) {
+                producto.cantidad++;
+            }
+            return producto;
+        });
+    } else {
+        totalCarrito = [...totalCarrito, productos];
+    }
+
+    actualizarCarritoHtml();
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 function actualizarCarritoHtml() {
     contenedorCarrito.innerHTML = '';
@@ -77,10 +66,64 @@ function actualizarCarritoHtml() {
             <td><img src="${img}" width="50"></td>
             <td>${nombre}</td>
             <td>${precio}</td>
-            <td>${cantidad}</td>
+            <td><input type="number" class="form-control ActualizarCantidad" value="${cantidad}" data-id="${id}"></td>
             <td><a href="#" class="btn btn-danger eliminarProducto" data-id="${id}">X</a></td>
         `;
 
         contenedorCarrito.appendChild(row);
+        const eliminar = row.querySelector('.eliminarProducto');
+        eliminar.addEventListener('click',eliminarProducto);
+
+        const ActualizarCantidadInput = row.querySelector('.ActualizarCantidad');
+        ActualizarCantidadInput.addEventListener('input',ActualizarCantidad);
+        
     });
+    total()
 }
+
+
+function eliminarProducto(e){
+    const id =  e.target.getAttribute('data-id');
+    console.log(`eliminando...  ${id}`);
+    console.log(totalCarrito);
+    
+    totalCarrito = totalCarrito.map(producto=>{
+        if(producto.id === id){
+          if (producto.cantidad > 1) {
+              producto.cantidad--
+          }
+          else {
+            return null
+          }
+        }
+        
+        return producto
+    })
+    totalCarrito = totalCarrito.filter(producto=>producto !== null)
+    actualizarCarritoHtml()
+}
+
+
+function total(){
+   const totalProductos = totalCarrito.reduce((total,producto)=> total + (producto.cantidad * producto.precio),0);
+   const totalCarritoHtml = document.getElementById('total-carrito');
+   totalCarritoHtml.innerHTML =  `Total $${Math.floor(totalProductos)}`
+}
+
+
+
+function ActualizarCantidad(e){
+    const id =  e.target.getAttribute('data-id');
+    const NuevaCantidad = parseInt(e.target.value);
+
+    totalCarrito = totalCarrito.map(producto=>{
+        if(producto.id === id){
+           producto.cantidad = NuevaCantidad;
+        }
+        return producto
+    })
+
+    total()
+    actualizarCarritoHtml()
+}
+
