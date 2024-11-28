@@ -4,6 +4,26 @@ const contenedor = document.querySelector('.box-container');
 const contenedorCarrito = document.getElementById('lista-carrito').querySelector('tbody');
 let totalCarrito = [];
 
+
+function getCarrito(){
+    const carritoStorage = localStorage.getItem('carrito');
+     if(carritoStorage) {
+        totalCarrito = JSON.parse(carritoStorage);
+        console.log(totalCarrito);
+        
+     }
+     else {
+        totalCarrito = [];
+     }
+  actualizarCarritoHtml();
+    
+}
+
+function guardarCarrito(){
+    const carritoStorage = JSON.stringify(totalCarrito);
+    localStorage.setItem('carrito',carritoStorage);
+}
+
 MostrarCarrito();
 function MostrarCarrito() {
     const carrito = document.querySelector('.titulo img');
@@ -18,6 +38,7 @@ cargarEvenlisteners();
 function cargarEvenlisteners() {
     contenedor.addEventListener('click', cargarProductos);
     console.log('diste click en el contenedor');
+    getCarrito();
 }
 
 function cargarProductos(e) {
@@ -26,21 +47,21 @@ function cargarProductos(e) {
     if (e.target.classList.contains('btn-primary')) {
         const productoSeleccionado = e.target.parentElement.parentElement;
         leerDatos(productoSeleccionado);
+        
+        
+        const button = e.target
+        button.innerHTML = "Agregando al carrito"
 
-
-      const button = e.target
-      button.innerHTML = "Agregando al carrito"
-
-      setTimeout(()=>{
+        setTimeout(()=>{
        button.innerHTML = "Agregado al carrito"
-      },1000)
-
-      setTimeout(()=>{
+    },1000)
+    
+    setTimeout(()=>{
         button.innerHTML = "Agregar al carrito"
-       },3000)
-      
-
-    }
+    },3000)
+    
+    
+}
 }
 
 function leerDatos(data) {
@@ -51,10 +72,10 @@ function leerDatos(data) {
         cantidad: 1,
         id: data.querySelector('a').getAttribute('data-id')
     };
-
+    
     console.log(productos);
     
-
+    
     const existe = totalCarrito.some(producto => producto.id === productos.id);
     if (existe) {
         totalCarrito = totalCarrito.map(producto => {
@@ -64,13 +85,14 @@ function leerDatos(data) {
             return producto;
         });
     } else {
-        totalCarrito = [...totalCarrito, productos];
-    }
+      totalCarrito = [...totalCarrito, productos];
 
+    }
+     guardarCarrito();
     actualizarCarritoHtml();
 }
 
-function actualizarCarritoHtml() {
+function actualizarCarritoHtml() {    
     contenedorCarrito.innerHTML = '';
     totalCarrito.forEach(producto => {
         const { img, nombre, precio, cantidad, id } = producto;
@@ -110,6 +132,7 @@ function ActualizarCantidad(e){
         return producto
     })
     total()
+    guardarCarrito();
     actualizarCarritoHtml();
 }
 
@@ -129,6 +152,7 @@ function eliminarProducto(e){
    
    totalCarrito = totalCarrito.filter(producto=> producto !== null);
    console.log(totalCarrito);
+   guardarCarrito();
     actualizarCarritoHtml();
 }
 
@@ -139,6 +163,11 @@ function total(){
   totalCarritoHtml.innerHTML = `Total $${Math.floor(totalProductos)}`    
    
 }
+
+
+
+
+
 
 
 
